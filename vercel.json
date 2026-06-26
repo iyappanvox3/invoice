@@ -3,6 +3,10 @@
     {
       "source": "/",
       "destination": "/invoice.html"
+    },
+    {
+      "source": "/pay",
+      "destination": "/pay.html"
     }
   ]
 }
