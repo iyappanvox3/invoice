@@ -1810,7 +1810,7 @@
                     if (bgImg && srcToRestore) bgImg.setAttribute('src', srcToRestore);
 
                     // Post to backend
-                    fetch('http://localhost:8002/send-email', {
+                    fetch('/send-email', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -1959,7 +1959,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:8002/create-order', {
+                const response = await fetch('/create-order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)

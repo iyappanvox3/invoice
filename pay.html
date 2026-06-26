@@ -1220,7 +1220,7 @@
         };
 
         try {
-          const res = await fetch('http://localhost:8002/submit-details', {
+          const res = await fetch('/submit-details', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
