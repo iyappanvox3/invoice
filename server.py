@@ -15,7 +15,7 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from binascii import hexlify, unhexlify
 
-PORT = 8002
+PORT = int(os.environ.get("PORT", 8002))
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 ORDERS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'orders.json')
