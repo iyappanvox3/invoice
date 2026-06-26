@@ -63,9 +63,28 @@ def save_orders(orders):
         json.dump(orders, f, indent=2)
 
 def load_config():
+    env_config = {
+        "smtp_user": os.environ.get("SMTP_USER"),
+        "smtp_password": os.environ.get("SMTP_PASSWORD"),
+        "ccavenue_merchant_id": os.environ.get("CCAVENUE_MERCHANT_ID"),
+        "ccavenue_access_code": os.environ.get("CCAVENUE_ACCESS_CODE"),
+        "ccavenue_working_key": os.environ.get("CCAVENUE_WORKING_KEY"),
+        "base_url": os.environ.get("BASE_URL")
+    }
+    if all(env_config.values()):
+        return env_config
     config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
-    with open(config_path, 'r') as f:
-        return json.load(f)
+    if os.path.exists(config_path):
+        with open(config_path, 'r') as f:
+            try:
+                file_config = json.load(f)
+                for k, v in env_config.items():
+                    if v is not None:
+                        file_config[k] = v
+                return file_config
+            except:
+                pass
+    return env_config
 
 # ── Handler ──────────────────────────────────────────────────────────────────
 
